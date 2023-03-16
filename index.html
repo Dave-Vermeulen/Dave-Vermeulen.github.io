@@ -234,68 +234,80 @@
 	<hr>
 		
       <hr>
-      <h2>Contact</h2>
-      <hr>
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-lg-8  col-12 jumbotron">
-            <form>
-              <div class="form-group">
-  <label for="email">E-Mail</label>
-  <input type="email" class="form-control" id="email" name="email" placeholder="Email Address" aria-describedby="emailHelp">
-  <span id="emailHelp" class="form-text text-muted" style="display: none;">Please enter a valid e-mail address.</span>
-</div>
-<div class="form-group">
-  <label for="message">Message</label>
-  <textarea rows="10" cols="100" class="form-control" id="message" name="message" placeholder="Message" aria-describedby="messageHelp"></textarea>
-  <span id="messageHelp" class="form-text text-muted" style="display: none;">Please enter a message.</span>
-</div>
-<button type="button" class="btn btn-primary" onclick="sendEmail()">Submit</button>
-            
-		  <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/npm/emailjs-com@2.6.4/lib/sdk.min.js">
-</script>
-<script type="text/javascript">
-   (function(){
-      emailjs.init("zkvR6OvuEinfKWIvC");
-   })();
-
-   function sendEmail() {
-     const email = document.getElementById("email").value;
-     const message = document.getElementById("message").value;
-
-     if (email.trim() === "") {
-       document.getElementById("emailHelp").style.display = "inline-block";
-       return;
-     }
-     document.getElementById("emailHelp").style.display = "none";
-
-     if (message.trim() === "") {
-       document.getElementById("messageHelp").style.display = "inline-block";
-       return;
-     }
-     document.getElementById("messageHelp").style.display = "none";
-
-     const templateParams = {
-       from_name: email,
-       to_name: "vermeulend002@gmail.com",
-       message: message,
-     };
-
-     emailjs.send("service_mu9i01o", "template_jpxip74", templateParams)
-       .then((response) => {
-         console.log('SUCCESS!', response.status, response.text);
-         alert("Thank you for your message!");
-       }, (error) => {
-         console.log('FAILED...', error);
-         alert("Message sending failed. Please try again later.");
-       });
-   }
-</script>
-            </form>
-          </div>
+<h2>Contact</h2>
+<hr>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-8 col-12 jumbotron">
+      <form>
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" id="name" name="name" placeholder="Your name" aria-describedby="nameHelp">
+          <span id="nameHelp" class="form-text text-muted" style="display: none;">Please enter your name.</span>
         </div>
-      </div>
+        <div class="form-group">
+          <label for="email">E-Mail</label>
+          <input type="email" class="form-control" id="email" name="email" placeholder="Email Address" aria-describedby="emailHelp">
+          <span id="emailHelp" class="form-text text-muted" style="display: none;">Please enter a valid e-mail address.</span>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea rows="10" cols="100" class="form-control" id="message" name="message" placeholder="Message" aria-describedby="messageHelp"></textarea>
+          <span id="messageHelp" class="form-text text-muted" style="display: none;">Please enter a message.</span>
+        </div>
+        <button type="button" class="btn btn-primary" onclick="sendEmail()">Submit</button>
+      </form>
+
+      <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
+      <script type="text/javascript">
+        (function() {
+          emailjs.init("user_123abc"); // Enter your user ID here
+        })();
+
+        function sendEmail() {
+          const name = document.getElementById("name").value;
+          const email = document.getElementById("email").value;
+          const message = document.getElementById("message").value;
+
+          if (name.trim() === "") {
+            document.getElementById("nameHelp").style.display = "inline-block";
+            return;
+          }
+          document.getElementById("nameHelp").style.display = "none";
+
+          if (email.trim() === "") {
+            document.getElementById("emailHelp").style.display = "inline-block";
+            return;
+          }
+          document.getElementById("emailHelp").style.display = "none";
+
+          if (message.trim() === "") {
+            document.getElementById("messageHelp").style.display = "inline-block";
+            return;
+          }
+          document.getElementById("messageHelp").style.display = "none";
+
+          const templateParams = {
+            from_name: name,
+            from_email: email,
+            to_name: "your_email_address@example.com", // Enter your email address here
+            message: message,
+          };
+
+          emailjs.send("service_abc123", "template_xyz456", templateParams) // Enter your service ID and template ID here
+            .then((response) => {
+              console.log('SUCCESS!', response.status, response.text);
+              alert("Thank you for your message!");
+            }, (error) => {
+              console.log('FAILED...', error);
+              alert("Message sending failed. Please try again later.");
+            });
+        }
+      </script>
+    </div>
+  </div>
+</div>
+
       <hr>
       <footer class="text-center">
         <div class="container">
