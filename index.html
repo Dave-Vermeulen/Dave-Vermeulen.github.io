@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Resume Page Template</title>
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="/bootstrap.css">
+    <title>Resume David Vermeulen</title>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+   <link rel="stylesheet" href="/bootstrap.css">
   </head>
   <body>
     <div class="container">
@@ -16,8 +16,15 @@
           <h1>David Vermeulen&nbsp;</h1>
         </div>
         <div class="col-6">
-          <p class="text-right"><a href="">Download my Resume</a></p>
-        </div>
+  <p class="text-right"><a href="#" onclick="generatePDF()">Download my Resume</a></p>
+</div>
+
+<script>
+  function generatePDF() {
+    const element = document.getElementById("resume");
+    html2pdf().from(element).save('davidVermeulen-resume.pdf');
+  }
+</script>
       </div>
       <hr>
       <div class="row">
@@ -237,22 +244,57 @@
           <div class="col-lg-8  col-12 jumbotron">
             <form>
               <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="Name">
-              </div>
-              <div class="form-group">
-                <label for="email">E-Mail</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="Email Address" aria-describedby="emailHelp">
-                <span id="emailHelp" class="form-text text-muted" style="display: none;">Please enter a valid e-mail address.</span>
-              </div>
-              <div class="form-group">
-                <label for="message">Message</label>
-                <textarea rows="10" cols="100" class="form-control" id="message" name="message" placeholder="Message" aria-describedby="messageHelp"></textarea>
-                <span id="messageHelp" class="form-text text-muted" style="display: none;">Please enter a message.</span>
-              </div>
-              <div class="text-center">
-                <button type="submit" class="btn btn-primary">Submit</button>
-              </div>
+  <label for="email">E-Mail</label>
+  <input type="email" class="form-control" id="email" name="email" placeholder="Email Address" aria-describedby="emailHelp">
+  <span id="emailHelp" class="form-text text-muted" style="display: none;">Please enter a valid e-mail address.</span>
+</div>
+<div class="form-group">
+  <label for="message">Message</label>
+  <textarea rows="10" cols="100" class="form-control" id="message" name="message" placeholder="Message" aria-describedby="messageHelp"></textarea>
+  <span id="messageHelp" class="form-text text-muted" style="display: none;">Please enter a message.</span>
+</div>
+<button type="button" class="btn btn-primary" onclick="sendEmail()">Submit</button>
+            
+		  <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/emailjs-com@2.6.4/lib/sdk.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init("zkvR6OvuEinfKWIvC");
+   })();
+
+   function sendEmail() {
+     const email = document.getElementById("email").value;
+     const message = document.getElementById("message").value;
+
+     if (email.trim() === "") {
+       document.getElementById("emailHelp").style.display = "inline-block";
+       return;
+     }
+     document.getElementById("emailHelp").style.display = "none";
+
+     if (message.trim() === "") {
+       document.getElementById("messageHelp").style.display = "inline-block";
+       return;
+     }
+     document.getElementById("messageHelp").style.display = "none";
+
+     const templateParams = {
+       from_name: email,
+       to_name: "vermeulend002@gmail.com",
+       message: message,
+     };
+
+     emailjs.send("service_mu9i01o", "template_jpxip74", templateParams)
+       .then((response) => {
+         console.log('SUCCESS!', response.status, response.text);
+         alert("Thank you for your message!");
+       }, (error) => {
+         console.log('FAILED...', error);
+         alert("Message sending failed. Please try again later.");
+       });
+   }
+</script>
             </form>
           </div>
         </div>
