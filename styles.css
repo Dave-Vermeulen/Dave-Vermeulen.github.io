@@ -82,3 +82,24 @@ h2 {
   transform: translateY(-2px);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+.row {
+  align-items: center; /* Added to vertically align content */
+}
+
+.col-6.text-start h1 {
+  margin: 0; /* Remove default margin to avoid extra space */
+}
+
+.col-6.text-end p button {
+  background-color: #007bff; /* Same blue as the References button */
+  border-color: #007bff;
+  color: #fff;
+  padding: 5px 10px; /* Adjust padding as needed */
+  border-radius: 5px; /* Add rounded corners */
+  cursor: pointer;
+}
+
+.col-6.text-end p button:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
