@@ -108,6 +108,7 @@ h2 {
 
 @media (min-width: 768px) { /* Adjust breakpoint as needed */
   .col-6.text-start h1 {
-    font-size: 24px; /* Increase font size for larger screens */
+    font-size: 29px;
+    text-align: left;  /* Increase font size for larger screens */
   }
 }
