@@ -83,23 +83,31 @@ h2 {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 .row {
-  align-items: center; /* Added to vertically align content */
+  align-items: center;
+  justify-content: space-between; /* Added to create space between elements */
 }
 
 .col-6.text-start h1 {
-  margin: 0; /* Remove default margin to avoid extra space */
+  margin: 0;
+  text-align: left; /* Explicitly set left alignment */
 }
 
 .col-6.text-end p button {
-  background-color: #007bff; /* Same blue as the References button */
+  background-color: #007bff;
   border-color: #007bff;
   color: #fff;
-  padding: 5px 10px; /* Adjust padding as needed */
-  border-radius: 5px; /* Add rounded corners */
+  padding: 5px 10px;
+  border-radius: 5px;
   cursor: pointer;
 }
 
 .col-6.text-end p button:hover {
   background-color: #0056b3;
   border-color: #0056b3;
+}
+
+@media (min-width: 768px) { /* Adjust breakpoint as needed */
+  .col-6.text-start h1 {
+    font-size: 24px; /* Increase font size for larger screens */
+  }
 }
