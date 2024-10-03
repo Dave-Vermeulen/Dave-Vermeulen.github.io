@@ -22,4 +22,45 @@
     width: 100%;
     max-width: 150px;
   }
+.social-icon img {
+  max-width: 50px;
+  height: auto;
+}
+
+.strava-button {
+  display: inline-block;
+  background-color: #FC5200;
+  color: #fff;
+  padding: 5px 10px 5px 30px;
+  font-size: 11px;
+  font-family: Helvetica, Arial, sans-serif;
+  white-space: nowrap;
+  text-decoration: none;
+  background-repeat: no-repeat;
+  background-position: 10px center;
+  border-radius: 3px;
+  background-image: url('https://badges.strava.com/logo-strava-echelon.png');
+}
+
+.strava-logo {
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  height: 13px;
+  width: 51px;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 </style>
+
